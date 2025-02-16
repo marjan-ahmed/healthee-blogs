@@ -1,3 +1,4 @@
+'use client'
 import { useSignIn } from "@clerk/nextjs";
 import { useState } from "react";
 
