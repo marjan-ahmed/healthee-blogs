@@ -22,7 +22,7 @@ export default async function Home() {
            blogImage={blog.image}
            blogTitle={blog.title}
            blogShortDescription={blog.smallDescription}
-           buttonText={blog.buttonText} />
+           buttonText={blog.buttonText} slug={""} />
       })}
     </div>
     </div>
