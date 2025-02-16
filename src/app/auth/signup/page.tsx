@@ -54,7 +54,7 @@ export default function MyForm() {
 <div className="flex justify-center m-3 p-2">
 <Card className="w-full max-w-sm sm:max-w-md mt-10">
         <CardHeader>
-        <CardTitle className="lg:text-3xl md:text-2xl sm:text-xl text-lg font-monstserrat font-black">Sign Up</CardTitle>
+        <CardTitle className="md:text-3xl sm:text-2xl text-xl font-monstserrat font-black">Sign Up</CardTitle>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -71,7 +71,7 @@ export default function MyForm() {
                     <FormItem>
                       <FormLabel className="font-monstserrat">First Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Beenish" type="text" className="font-monstserrat tracking-tight" {...field} />
+                        <Input placeholder="Beenish" type="text" className="h-12 font-monstserrat tracking-tight text-sm" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -87,7 +87,7 @@ export default function MyForm() {
                     <FormItem>
                       <FormLabel className="font-monstserrat">Last Name</FormLabel>
                       <FormControl>
-                        <Input className="font-monstserrat tracking-tight" placeholder="Ishtiaq" type="text" {...field} />
+                        <Input className="h-12 font-monstserrat tracking-tight text-sm" placeholder="Ishtiaq" type="text" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -106,7 +106,7 @@ export default function MyForm() {
                     <Input
                       placeholder="beenishishtiaq@gmail.com"
                       type="email"
-                      className="font-monstserrat tracking-tight"
+                      className="h-12 font-monstserrat tracking-tight text-sm"
                       {...field}
                     />
                   </FormControl>
@@ -122,7 +122,7 @@ export default function MyForm() {
                 <FormItem>
                   <FormLabel className="font-monstserrat">Password</FormLabel>
                   <FormControl>
-                    <PasswordInput className="font-monstserrat" placeholder="Enter your password" {...field} />
+                    <PasswordInput className="h-12 font-monstserrat tracking-tight text-sm" placeholder="Enter your password" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

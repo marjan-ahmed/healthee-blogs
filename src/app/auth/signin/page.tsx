@@ -72,7 +72,7 @@ export default function SignIn() {
     <div className="flex justify-center m-3 p-2">
   <Card className="w-full max-w-sm sm:max-w-md mt-10">
       <CardHeader>
-        <CardTitle className="lg:text-3xl md:text-2xl sm:text-xl text-lg font-monstserrat font-black">Sign In</CardTitle>
+        <CardTitle className="md:text-3xl sm:text-2xl text-xl font-monstserrat font-black">Sign In</CardTitle>
       </CardHeader>
       <CardContent>
         <Form {...form}>
