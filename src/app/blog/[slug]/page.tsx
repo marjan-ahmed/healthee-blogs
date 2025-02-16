@@ -11,8 +11,9 @@ interface BlogDetailProps {
 }
 
 async function BlogDetail({ params }: BlogDetailProps) {
+  const { slug } = params;
   const query = `
-  *[_type == "blog" && slug.current == $slug][0] {
+  *[_type == "blog" && slug.current == $slug] {
     "currentSlug": slug.current,
     title,
     smallDescription,
@@ -43,7 +44,6 @@ async function BlogDetail({ params }: BlogDetailProps) {
           <span className="font-monstserrat block text-lg text-center font-normal tracking-tighter sm:text-md">{data.smallDescription}</span>
         </h1>
 
-        {}
         {data.image && (
           <div className="relative w-full max-w-[1000px] h-[500px] mx-auto mt-8">
           <Image
@@ -57,7 +57,7 @@ async function BlogDetail({ params }: BlogDetailProps) {
         </div>
         )}
 
-        {}
+        
         <div className="mt-20 prose prose-blue prose-lg dark:prose-invert mb-20">
         <PortableText value={data.content} components={portableTextSerializer} />
         </div>
