@@ -13,7 +13,7 @@ export interface IBlogCard {
     slug: string;
 }
 
-function BlogCard({ blogImage, blogTitle, blogShortDescription, buttonText, slug }: IBlogCard) {
+function BlogCard({ blogImage, blogTitle, blogShortDescription, buttonText, slug}: IBlogCard) {
     const [imageLoaded, setImageLoaded] = useState(false);
 
     // Ensure the blogImage is a valid URL or null
@@ -48,7 +48,7 @@ function BlogCard({ blogImage, blogTitle, blogShortDescription, buttonText, slug
                 <h3 className="text-sm text-gray-600 font-monstserrat line-clamp-2">
                     {blogShortDescription || "Loading..."}
                 </h3>
-                <Link href={`/blog/${slug}`} passHref>
+                <Link href={``} passHref>
                     <Button className="h-9 w-24 font-monstserrat text-sm mt-2 absolute bottom-4">{buttonText}</Button>
                 </Link>
 
