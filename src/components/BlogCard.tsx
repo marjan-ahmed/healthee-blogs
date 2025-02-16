@@ -48,7 +48,7 @@ function BlogCard({ blogImage, blogTitle, blogShortDescription, buttonText, slug
                 <h3 className="text-sm text-gray-600 font-monstserrat line-clamp-2">
                     {blogShortDescription || "Loading..."}
                 </h3>
-                <Link href={`/${slug}`} passHref>
+                <Link href={`/blog/${slug}`} passHref>
                     <Button className="h-9 w-24 font-monstserrat text-sm mt-2 absolute bottom-4">{buttonText}</Button>
                 </Link>
 
