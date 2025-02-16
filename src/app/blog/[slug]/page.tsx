@@ -5,15 +5,13 @@ import Image from 'next/image';
 import React from 'react';
 
 interface BlogDetailProps {
-  params: {
-    slug: string;
-  }
+  params: Promise<{ slug: string }>
 }
 
-async function BlogDetail({ params }: BlogDetailProps) {
-  const { slug } = params;
+export default async function BlogDetail({ params }: BlogDetailProps) {
+  const { slug } = await params;
   const query = `
-  *[_type == "blog" && slug.current == $slug] {
+  *[_type == "blog" && slug.current == $slug][0] {
     "currentSlug": slug.current,
     title,
     smallDescription,
@@ -22,8 +20,7 @@ async function BlogDetail({ params }: BlogDetailProps) {
     content
   }`;
 
-  
-  const data = await client.fetch(query);
+  const data = await client.fetch(query, { slug });
 
   if (!data) {
     return <p className="text-center mt-20 sm:text-2xl text-xl font-monstserrat">OOPS! 🙁 Blog not found.</p>;
@@ -34,9 +31,9 @@ async function BlogDetail({ params }: BlogDetailProps) {
       <div className="sm:mx-32 mx-2 mt-8">
         <h1>
           <div className="w-56 mx-auto block">
-          <span className="font-monstserrat border-b-2 border-gray-300 block text-base text-center text-primary font-semibold tracking-wide uppercase">
-            Beenish Ishtiaq - Blog
-          </span>
+            <span className="font-monstserrat border-b-2 border-gray-300 block text-base text-center text-primary font-semibold tracking-wide uppercase">
+              Beenish Ishtiaq - Blog
+            </span>
           </div>
           <span className="mt-6 font-monstserrat block text-3xl text-center font-extrabold tracking-tight sm:text-4xl">
             {data.title}
@@ -46,24 +43,20 @@ async function BlogDetail({ params }: BlogDetailProps) {
 
         {data.image && (
           <div className="relative w-full max-w-[1000px] h-[500px] mx-auto mt-8">
-          <Image
-            src={data.image}
-            alt="Title Image"
-            priority
-            objectFit="cover"
-            fill  
-            className="rounded-md border"
-          />
-        </div>
+            <Image
+              src={data.image || "/placeholder.svg"}
+              alt="Title Image"
+              priority
+              fill
+              className="rounded-md border object-cover"
+            />
+          </div>
         )}
 
-        
         <div className="mt-20 prose prose-blue prose-lg dark:prose-invert mb-20">
-        <PortableText value={data.content} components={portableTextSerializer} />
+          <PortableText value={data.content} components={portableTextSerializer} />
         </div>
       </div>
     </div>
   );
 }
-
-export default BlogDetail;
