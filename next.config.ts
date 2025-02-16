@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
       {
         hostname: 'via.placeholder.com',
         protocol: 'https'
+      },
+      {
+        hostname: 'cdn.sanity.io',
+        protocol: 'https'
       }
     ]
   }

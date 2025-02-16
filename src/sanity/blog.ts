@@ -23,7 +23,7 @@ export default {
         },
         {
             name: 'smallDescription',
-            type: 'text',
+            type: 'string',
             title: 'Small Description'
         },
         {
@@ -38,7 +38,7 @@ export default {
         },
         {
             name: 'buttonText',
-            type: 'text',
+            type: 'string',
             title: 'Button text (Read More)'
         }
     ],
