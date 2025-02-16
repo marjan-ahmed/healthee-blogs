@@ -1,6 +1,4 @@
 "use client";
-
-import { useState } from "react";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -71,7 +69,8 @@ export default function SignIn() {
   }
 
   return (
-    <Card className="max-w-md mx-auto mt-10">
+    <div className="flex justify-center px-4">
+  <Card className="w-full max-w-sm sm:max-w-md mt-10">
       <CardHeader>
         <CardTitle className="lg:text-3xl md:text-2xl sm:text-xl text-lg font-monstserrat font-black">Sign In</CardTitle>
       </CardHeader>
@@ -120,7 +119,7 @@ export default function SignIn() {
             <OrSeparator />
 
             {/* Social Login Buttons */}
-            <div className="flex items-center justify-between space-x-2">
+            <div className="flex sm:flex-nowrap flex-wrap sm:gap-0 gap-2 items-center justify-between space-x-2">
               <Button type="button" variant="outline" className="w-full font-monstserrat text-[13px] tracking-tighter" onClick={() => handleSocialSignIn("oauth_google")}>
               <FcGoogle />
               Sign in with Google
@@ -147,5 +146,6 @@ export default function SignIn() {
         </Form>
       </CardContent>
     </Card>
+    </div>
   );
 }
