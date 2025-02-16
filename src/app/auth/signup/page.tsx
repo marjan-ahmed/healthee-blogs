@@ -51,7 +51,7 @@ export default function MyForm() {
   }
 
   return (
-<div className="flex justify-center px-4">
+<div className="flex justify-center m-4 p-4">
 <Card className="w-full max-w-sm sm:max-w-md mt-10">
         <CardHeader>
         <CardTitle className="lg:text-3xl md:text-2xl sm:text-xl text-lg font-monstserrat font-black">Sign Up</CardTitle>
@@ -135,7 +135,7 @@ export default function MyForm() {
             <OrSeparator />
 
             {/* Social Login Buttons */}
-            <div className="flex sm:flex-nowrap flex-wrap gap-2 sm:gap-0 items-center justify-between space-x-2">
+            <div className="flex sm:flex-nowrap flex-wrap gap-2 sm:gap-0 justify-center items-center sm:justify-between space-x-2">
               <Button type="button" variant="outline" className="w-full font-monstserrat text-[13px] tracking-tighter">
               <FcGoogle />
               Sign Up with Google
