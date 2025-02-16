@@ -4,8 +4,13 @@ import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import React from 'react';
 
+interface BlogDetailProps {
+  params: {
+    slug: string;
+  }
+}
 
-async function BlogDetail({ params }: { params: { slug: string } }) {
+async function BlogDetail({ params }: BlogDetailProps) {
   const query = `
   *[_type == "blog" && slug.current == $slug][0] {
     "currentSlug": slug.current,
@@ -17,7 +22,7 @@ async function BlogDetail({ params }: { params: { slug: string } }) {
   }`;
 
   
-  const data = await client.fetch(query, { slug: params.slug });
+  const data = await client.fetch(query);
 
   if (!data) {
     return <p className="text-center mt-20 sm:text-2xl text-xl font-monstserrat">OOPS! 🙁 Blog not found.</p>;
