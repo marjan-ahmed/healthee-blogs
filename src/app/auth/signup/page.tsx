@@ -51,7 +51,7 @@ export default function MyForm() {
   }
 
   return (
-<div className="flex justify-center m-4 p-4">
+<div className="flex justify-center m-3 p-2">
 <Card className="w-full max-w-sm sm:max-w-md mt-10">
         <CardHeader>
         <CardTitle className="lg:text-3xl md:text-2xl sm:text-xl text-lg font-monstserrat font-black">Sign Up</CardTitle>
