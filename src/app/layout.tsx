@@ -36,7 +36,7 @@ export default function RootLayout({
     <ClerkProvider>
     <html lang="en">
       <body
-        className={`${montserrat.variable} antialiased`}
+        className={`${montserrat.variable} ${geistMono.variable} ${geistSans.variable} antialiased`}
         cz-shortcut-listen="true"
       >
         <Header/>

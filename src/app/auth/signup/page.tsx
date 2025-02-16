@@ -135,11 +135,11 @@ export default function MyForm() {
 
             {/* Social Login Buttons */}
             <div className="flex items-center justify-between space-x-2">
-              <Button type="button" variant="outline" className="w-full font-monstserrat text-[13px] tracking-tighter" onClick={() => handleSocialSignUp("oauth_google")}>
+              <Button type="button" variant="outline" className="w-full font-monstserrat text-[13px] tracking-tighter">
               <FcGoogle />
               Sign Up with Google
               </Button>
-              <Button type="button" variant="outline" className="w-full font-monstserrat text-[13px] tracking-tighter" onClick={() => handleSocialSignUp("oauth_facebook")}>
+              <Button type="button" variant="outline" className="w-full font-monstserrat text-[13px] tracking-tighter">
                 <Image src={'/facebook-logo.svg'}
                 alt="Facebook Logo"
                 width={18}
