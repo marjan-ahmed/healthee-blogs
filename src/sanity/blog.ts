@@ -17,7 +17,7 @@ export default {
             }
         },
         {
-            name: 'titleImage',
+            name: 'image',
             type: 'image',
             title: 'Title Image'
         },
@@ -36,5 +36,10 @@ export default {
               }
             ],
         },
+        {
+            name: 'buttonText',
+            type: 'text',
+            title: 'Button text (Read More)'
+        }
     ],
 }
