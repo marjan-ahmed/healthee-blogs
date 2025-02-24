@@ -7,13 +7,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-type IBlog = {
-  image: string;
-  title: string;
-  smallDescription: string;
-  buttonText: string;
-  slug: string;
-};
+export const revalidate = 30; // revalidate at most 30 seconds
 
 async function getData() {
   const data = await client.fetch(`
@@ -24,20 +18,21 @@ async function getData() {
     "slug": slug.current,
     buttonText
   }`);
-  console.log(data);
+
   return data;
 }
 
 export default async function Home() {
   const data: simpleBlogCard[] = await getData();
+  console.log(data)
   return (
     <>
    <div className="mx-2 sm:mx-32">
     <Banner />
      <div className="flex items-center justify-center sm:justify-start h-screen mt-[-100px] sm:mt-[-70px] line-clamp-none">
     <div className="flex flex-wrap gap-5 justify-center sm:justify-between">
-      {data.map((blog, idx) => (
-      <Card key={idx} className="w-72 flex hover:scale-105 transition-all flex-col items-center justify-between">
+      {data.map((blog, slug) => (
+      <Card key={slug} className="w-72 flex hover:scale-105 transition-all flex-col items-center justify-between">
   <Image
     src={blog.image}
     alt="image"

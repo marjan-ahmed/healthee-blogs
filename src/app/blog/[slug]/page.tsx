@@ -1,56 +1,75 @@
-import { fullBlog } from "@/app/_lib/interface";
-import { client, urlFor } from "../../_lib/sanity";
-import { PortableText } from "@portabletext/react";
-import Image from "next/image";
+import portableTextSerializer from "@/components/portableTextSerializer";
+import { client } from '@/sanity/lib/client';
+import { PortableText } from '@portabletext/react';
+import Image from 'next/image';
+import React from 'react';
 
-export const revalidate = 30; // revalidate at most 30 seconds
+export const revalidate = 30;
 
-async function getData(slug: string) {
-  const query = `
-    *[_type == "blog" && slug.current == '${slug}'] {
-        "currentSlug": slug.current,
-        title,
-        content,
-        image
-    }[0]`;
-
-  const data = await client.fetch(query);
-  return data;
+interface BlogDetailProps {
+  params: {
+    slug: string;
+  };
 }
 
-export default async function BlogArticle({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const data: fullBlog = await getData(params.slug);
+async function BlogDetail({ params }: BlogDetailProps) {
+  const { slug } = params;
+  const query = `
+  *[_type == "blog" && slug.current == "${slug}"] {
+    "currentSlug": slug.current,
+    title,
+    smallDescription,
+    "image": image.asset->url,
+    buttonText,
+    content
+  }`;
+
+  const data = await client.fetch(query, { slug: params.slug });
+
+  if (!data || data.length === 0) {
+    return <p className="text-center mt-20 sm:text-2xl text-xl font-montserrat">OOPS! 🙁 Blog not found.</p>;
+  }
+
+  const blog = data[0];
 
   return (
     <div className="flex items-center justify-center min-h-screen px-4">
-      <div className="max-w-3xl w-full mt-8">
+      <div className="sm:mx-32 mx-2 mt-8">
         <h1>
-          <span className="block text-base text-center text-primary font-semibold tracking-wide uppercase">
-            Marjan Ahmed - Blog
+          <div className="w-60 mx-auto block">
+          <span className="font-montserrat border-b-2 p-1 border-gray-300 block text-base text-center text-primary font-semibold tracking-wide uppercase relative overflow-hidden group">
+  <span className="absolute inset-0 bg-gray-200 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out"></span>
+  <span className="relative z-10">Beenish Ishtiaq - Blog</span>
+</span>
+
+          </div>
+          <span className="mt-6 font-montserrat block text-3xl text-center font-extrabold tracking-tight sm:text-4xl">
+            {blog.title}
           </span>
-          <span className="mt-2 block text-3xl text-center leading-8 font-bold tracking-tight sm:text-4xl">
-            {data.title}
+          <span className="font-montserrat block text-lg text-center font-normal tracking-tighter sm:text-md">
+            {blog.smallDescription}
           </span>
         </h1>
 
-        {/* Make the image full width on mobile devices */}
-        <Image
-          src={urlFor(data.image).url()}
-          width={800}
-          height={800}
-          alt="Title Image"
-          priority
-          className="rounded-md mt-8 border mx-auto w-full sm:w-[800px]" // Full width on mobile, fixed width on larger screens
-        />
+        {blog.image && (
+          <div className="relative w-full max-w-[1000px] h-[500px] mx-auto mt-8">
+            <Image
+              src={blog.image}
+              alt="Title Image"
+              priority
+              objectFit="cover"
+              fill
+              className="rounded-md border"
+            />
+          </div>
+        )}
 
-        <div className="mt-20 prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary prose-a:text-primary">
-          <PortableText value={data.content} />
+        <div className="mt-20 prose prose-blue prose-lg dark:prose-invert mb-20">
+          <PortableText value={blog.content} components={portableTextSerializer} />
         </div>
       </div>
     </div>
   );
 }
+
+export default BlogDetail;

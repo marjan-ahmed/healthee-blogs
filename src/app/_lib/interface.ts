@@ -1,5 +1,4 @@
   export type simpleBlogCard = {
-    currentSlug: any;
     image: string;
     title: string;
     smallDescription: string;
