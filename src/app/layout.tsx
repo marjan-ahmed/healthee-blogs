@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Montserrat } from "next/font/google";
+import { Geist, Geist_Mono, Lora, Montserrat, Nunito } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import {ClerkProvider} from '@clerk/nextjs'
@@ -10,6 +10,20 @@ const montserrat = Montserrat({
   subsets: ['latin'],
   style: 'normal',
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+})
+
+const nunito = Nunito({
+  variable: "--font-nunito",
+  subsets: ['latin'],
+  style: 'normal',
+  weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
+})
+
+const lora = Lora({
+  variable: "--font-lora",
+  subsets: ['latin'],
+  style: 'normal',
+  weight: ['400', '500', '600', '700'],
 })
 
 const geistSans = Geist({
@@ -36,7 +50,7 @@ export default function RootLayout({
     <ClerkProvider>
     <html lang="en">
       <body
-        className={`${montserrat.variable} ${geistMono.variable} ${geistSans.variable} antialiased`}
+        className={`${montserrat.variable} ${nunito.variable} ${lora.variable} ${geistMono.variable} ${geistSans.variable} antialiased`}
         cz-shortcut-listen="true"
       >
         <Header/>

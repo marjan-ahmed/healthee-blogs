@@ -10,7 +10,9 @@ export default {
   theme: {
   	extend: {
 		fontFamily: {
-			monstserrat: 'var(--font-montserrat)'
+			montserrat: 'var(--font-montserrat)',
+			lora: 'var(--font-lora)',
+			nunito: 'var(--font-nunito)',
 		},
   		colors: {
   			background: 'hsl(var(--background))',
@@ -61,5 +63,6 @@ export default {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+	require("tailwindcss-animate")],
 } satisfies Config;

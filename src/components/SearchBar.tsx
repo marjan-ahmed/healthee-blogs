@@ -6,7 +6,7 @@ function SearchBar() {
   return (
     <div className='flex relative items-center'>
         <SearchIcon className='absolute right-2' size={20}/>
-        <Input className='lg:w-96 sm:w-52 h-11 w-full font-monstserrat font-semibold'/>
+        <Input className='lg:w-96 sm:w-52 h-11 w-full font-montserrat font-semibold'/>
     </div>
   )
 }

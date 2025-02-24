@@ -40,14 +40,14 @@ function BlogCard({ blogImage, blogTitle, blogShortDescription, buttonText, slug
 
             {/* Content Section */}
             <div className="p-3 space-y-1">
-                <h1 className="font-monstserrat font-bold text-lg truncate">
+                <h1 className="font-montserrat font-bold text-lg truncate">
                     {blogTitle || "Loading..."}
                 </h1>
-                <h3 className="text-sm text-gray-600 font-monstserrat line-clamp-2">
+                <h3 className="text-sm text-gray-600 font-montserrat line-clamp-2">
                     {blogShortDescription || "Loading..."}
                 </h3>
                 <Link href={`/blog/${slug}`} passHref>
-                    <Button className="h-9 w-24 font-monstserrat text-sm mt-2 absolute bottom-4">
+                    <Button className="h-9 w-24 font-montserrat text-sm mt-2 absolute bottom-4">
                         {buttonText || "Read More"}
                     </Button>
                 </Link>

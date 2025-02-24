@@ -20,7 +20,7 @@ export default function Banner() {
       {/* Text in Front */}
       <div className="absolute inset-0 flex items-center justify-center">
 
-        <h2 className="text-white lg:text-4xl md:text-3xl sm:text-3xl text-2xl font-bold font-monstserrat">
+        <h2 className="text-white sm:text-4xl text-3xl font-bold font-montserrat">
           Recent Blogs
         </h2>
       </div>
