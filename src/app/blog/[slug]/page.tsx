@@ -1,19 +1,27 @@
-import portableTextSerializer from "@/components/portableTextSerializer";
-import { client } from '@/sanity/lib/client';
-import { PortableText } from '@portabletext/react';
-import Image from 'next/image';
-import React from 'react';
+import portableTextSerializer from "@/components/portableTextSerializer"
+import { client } from "@/sanity/lib/client"
+import { PortableText } from "@portabletext/react"
+import Image from "next/image"
+import type { Metadata } from "next"
 
-export const revalidate = 30;
+export const revalidate = 30
 
-interface BlogDetailProps {
-  params: {
-    slug: string;
-  };
+interface Params {
+  slug: string
 }
 
-async function BlogDetail({ params }: BlogDetailProps) {
-  const { slug } = params;
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { slug } = params
+  const query = `*[_type == "blog" && slug.current == "${slug}"][0].title`
+  const title = await client.fetch(query)
+
+  return {
+    title: title || "Blog Post",
+  }
+}
+
+export default async function BlogDetail({ params }: { params: Params }) {
+  const { slug } = params
   const query = `
   *[_type == "blog" && slug.current == "${slug}"] {
     "currentSlug": slug.current,
@@ -22,26 +30,25 @@ async function BlogDetail({ params }: BlogDetailProps) {
     "image": image.asset->url,
     buttonText,
     content
-  }`;
+  }`
 
-  const data = await client.fetch(query, { slug: params.slug });
+  const data = await client.fetch(query)
 
   if (!data || data.length === 0) {
-    return <p className="text-center mt-20 sm:text-2xl text-xl font-montserrat">OOPS! 🙁 Blog not found.</p>;
+    return <p className="text-center mt-20 sm:text-2xl text-xl font-montserrat">OOPS! 🙁 Blog not found.</p>
   }
 
-  const blog = data[0];
+  const blog = data[0]
 
   return (
     <div className="flex items-center justify-center min-h-screen px-4">
       <div className="sm:mx-32 mx-2 mt-8">
         <h1>
           <div className="w-60 mx-auto block">
-          <span className="font-montserrat border-b-2 p-1 border-gray-300 block text-base text-center text-primary font-semibold tracking-wide uppercase relative overflow-hidden group">
-  <span className="absolute inset-0 bg-gray-200 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out"></span>
-  <span className="relative z-10">Beenish Ishtiaq - Blog</span>
-</span>
-
+            <span className="font-montserrat border-b-2 p-1 border-gray-300 block text-base text-center text-primary font-semibold tracking-wide uppercase relative overflow-hidden group">
+              <span className="absolute inset-0 bg-gray-200 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out"></span>
+              <span className="relative z-10">Beenish Ishtiaq - Blog</span>
+            </span>
           </div>
           <span className="mt-6 font-montserrat block text-3xl text-center font-extrabold tracking-tight sm:text-4xl">
             {blog.title}
@@ -54,12 +61,11 @@ async function BlogDetail({ params }: BlogDetailProps) {
         {blog.image && (
           <div className="relative w-full max-w-[1000px] h-[500px] mx-auto mt-8">
             <Image
-              src={blog.image}
+              src={blog.image || "/placeholder.svg"}
               alt="Title Image"
               priority
-              objectFit="cover"
               fill
-              className="rounded-md border"
+              className="rounded-md border object-cover"
             />
           </div>
         )}
@@ -69,7 +75,6 @@ async function BlogDetail({ params }: BlogDetailProps) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default BlogDetail;
