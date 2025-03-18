@@ -10,8 +10,9 @@ interface Params {
   slug: string
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-  const { slug } = params
+export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
+  const resolvedParams = await params
+  const { slug } = resolvedParams
   const query = `*[_type == "blog" && slug.current == "${slug}"][0].title`
   const title = await client.fetch(query)
 
@@ -20,8 +21,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   }
 }
 
-export default async function BlogDetail({ params }: { params: Params }) {
-  const { slug } = params
+export default async function BlogDetail({ params }: { params: Promise<Params> }) {
+  const resolvedParams = await params
+  const { slug } = resolvedParams
   const query = `
   *[_type == "blog" && slug.current == "${slug}"] {
     "currentSlug": slug.current,
