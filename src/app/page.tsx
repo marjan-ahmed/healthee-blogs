@@ -7,10 +7,10 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export const revalidate = 30; // revalidate at most 30 seconds
+export const revalidate = 30; 
 
 async function getData() {
-  const data = await client.fetch(`
+  const data = await client.fetch(` 
   *[_type == 'blog']{
     title,
     smallDescription,

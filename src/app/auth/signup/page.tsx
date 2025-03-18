@@ -63,7 +63,7 @@ export default function SignUpForm() {
     <div className="flex justify-center m-3 p-2">
       <Card className="w-full max-w-sm sm:max-w-md mt-10">
         <CardHeader>
-          <CardTitle className="md:text-3xl sm:text-2xl text-xl font-monstserrat font-black">
+          <CardTitle className="md:text-3xl sm:text-2xl text-xl font-montserrat font-black">
             Sign Up
           </CardTitle>
         </CardHeader>
@@ -77,9 +77,9 @@ export default function SignUpForm() {
                     name="firstName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="font-monstserrat">First Name</FormLabel>
+                        <FormLabel className="font-montserrat">First Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Beenish" type="text" className="h-12 font-monstserrat tracking-tight text-sm" {...field} />
+                          <Input placeholder="Beenish" type="text" className="h-12 font-montserrat tracking-tight text-sm" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -93,9 +93,9 @@ export default function SignUpForm() {
                     name="lastName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="font-monstserrat">Last Name</FormLabel>
+                        <FormLabel className="font-montserrat">Last Name</FormLabel>
                         <FormControl>
-                          <Input className="h-12 font-monstserrat tracking-tight text-sm" placeholder="Ishtiaq" type="text" {...field} />
+                          <Input className="h-12 font-montserrat tracking-tight text-sm" placeholder="Ishtiaq" type="text" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -109,12 +109,12 @@ export default function SignUpForm() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-monstserrat">Email</FormLabel>
+                    <FormLabel className="font-montserrat">Email</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="beenishishtiaq@gmail.com"
                         type="email"
-                        className="h-12 font-monstserrat tracking-tight text-sm"
+                        className="h-12 font-montserrat tracking-tight text-sm"
                         {...field}
                       />
                     </FormControl>
@@ -128,34 +128,34 @@ export default function SignUpForm() {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-monstserrat">Password</FormLabel>
+                    <FormLabel className="font-montserrat">Password</FormLabel>
                     <FormControl>
-                      <PasswordInput className="h-12 font-monstserrat tracking-tight text-sm" placeholder="Enter your password" {...field} />
+                      <PasswordInput className="h-12 font-montserrat tracking-tight text-sm" placeholder="Enter your password" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
 
-              <Button className="w-full font-monstserrat" type="submit">
+              <Button className="w-full font-montserrat" type="submit">
                 Sign Up
               </Button>
               <OrSeparator />
 
               {/* Social Login Buttons */}
               <div className="flex sm:flex-nowrap flex-wrap gap-2 sm:gap-0 justify-center items-center sm:justify-between space-x-2">
-                <Button type="button" variant="outline" className="w-full font-monstserrat text-[13px] tracking-tighter">
+                <Button type="button" variant="outline" className="w-full font-montserrat text-[13px] tracking-tighter">
                   <FcGoogle />
                   Sign Up with Google
                 </Button>
-                <Button type="button" variant="outline" className="w-full font-monstserrat text-[13px] tracking-tighter">
+                <Button type="button" variant="outline" className="w-full font-montserrat text-[13px] tracking-tighter">
                   <Image src={"/facebook-logo.svg"} alt="Facebook Logo" width={18} height={18} />
                   Sign Up with Facebook
                 </Button>
               </div>
 
               {/* Already have an account? */}
-              <div className="text-center font-monstserrat tracking-tighter text-sm mt-2">
+              <div className="text-center font-montserrat tracking-tighter text-sm mt-2">
                 <div>
                   Already have an account?
                   <Link href="/auth/signin" className="text-gray-600 hover:underline">

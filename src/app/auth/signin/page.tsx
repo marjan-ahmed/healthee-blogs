@@ -76,7 +76,7 @@ export default function SignIn() {
     <div className="flex justify-center m-3 p-2">
       <Card className="w-full max-w-sm sm:max-w-md mt-10">
         <CardHeader>
-          <CardTitle className="md:text-3xl sm:text-2xl text-xl font-monstserrat font-black">
+          <CardTitle className="md:text-3xl sm:text-2xl text-xl font-montserrat font-black">
             Sign In
           </CardTitle>
         </CardHeader>
@@ -89,11 +89,11 @@ export default function SignIn() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-monstserrat">Email</FormLabel>
+                    <FormLabel className="font-montserrat">Email</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="yourname@gmail.com"
-                        className="h-12 font-monstserrat tracking-tight text-sm"
+                        className="h-12 font-montserrat tracking-tight text-sm"
                         type="email"
                         {...field}
                       />
@@ -109,10 +109,10 @@ export default function SignIn() {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-monstserrat">Password</FormLabel>
+                    <FormLabel className="font-montserrat">Password</FormLabel>
                     <FormControl>
                       <PasswordInput
-                        className="h-12 font-monstserrat tracking-tight text-sm"
+                        className="h-12 font-montserrat tracking-tight text-sm"
                         placeholder="Enter your password"
                         {...field}
                       />
@@ -121,12 +121,12 @@ export default function SignIn() {
                   </FormItem>
                 )}
               />
-              <Link href="/sign-in/forgot-password" className="text-[11px] font-monstserrat tracking-tight text-blue-600 hover:underline">
+              <Link href="/sign-in/forgot-password" className="text-[11px] font-montserrat tracking-tight text-blue-600 hover:underline">
                 Forgot Password?
               </Link>
 
               {/* Submit Button */}
-              <Button type="submit" className="w-full font-monstserrat">
+              <Button type="submit" className="w-full font-montserrat">
                 Sign In
               </Button>
 
@@ -137,7 +137,7 @@ export default function SignIn() {
                 <Button
                   type="button"
                   variant="outline"
-                  className="w-full font-monstserrat text-[13px] tracking-tighter flex items-center justify-center gap-2"
+                  className="w-full font-montserrat text-[13px] tracking-tighter flex items-center justify-center gap-2"
                   onClick={() => handleSocialSignIn("oauth_google")}
                 >
                   <FcGoogle />
@@ -146,7 +146,7 @@ export default function SignIn() {
                 <Button
                   type="button"
                   variant="outline"
-                  className="w-full font-monstserrat text-[13px] tracking-tighter flex items-center justify-center gap-2"
+                  className="w-full font-montserrat text-[13px] tracking-tighter flex items-center justify-center gap-2"
                   onClick={() => handleSocialSignIn("oauth_facebook")}
                 >
                   <Image src={"/facebook-logo.svg"} alt="Facebook Logo" width={18} height={18} />
@@ -155,7 +155,7 @@ export default function SignIn() {
               </div>
 
               {/* Sign Up Link */}
-              <div className="text-center font-monstserrat tracking-tighter text-sm mt-2">
+              <div className="text-center font-montserrat tracking-tighter text-sm mt-2">
                 <div>
                   Don’t have an account?{" "}
                   <Link href="/auth/signup" className="text-gray-600 hover:underline">
